@@ -1,0 +1,446 @@
+/* Sentiment.css */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #e3f2fd, #f1f8ff);
+}
+
+.sentiment-container {
+  background-color: #fff;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 50px !important;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tab-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #e3f2fd;
+  color: #1a237e;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tab-buttons button:hover {
+  background-color: #bbdefb;
+}
+
+.tab-buttons .active-tab {
+  background-color: #1a237e;
+  color: white;
+  border: 4px solid hsl(194, 93%, 29%) !important;
+}
+
+.result-section {
+  background: linear-gradient(135deg, #e1f5fe, #e0f7fa);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-section h5 {
+  font-size: 20px;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+.sentiment-icon {
+  width: 22px;
+  height: 22px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  gap: 8px;
+  padding: 6px 6px;
+  border: 1px solid #ccc;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #333;
+  max-height: 70px;
+  max-width: 200px;
+  margin: 0 auto; /* Center container */
+}
+
+
+.uploaded-file button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.uploaded-file i.bi-x-circle {
+  font-size: 30px;
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+
+.uploaded-file button {
+  background: none !important;
+  border: none !important;
+  padding: 0;
+  margin-left: 60px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.uploaded-file button:focus,
+.uploaded-file button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.uploaded-file button:hover i {
+  color: #bb2d3b;
+}
+
+.uploaded-file button:focus,
+.uploaded-file button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+
+/* Bootstrap Cancel Icon */
+.uploaded-file i.bi-x-circle {
+  font-size: 24px;
+  color: #dc3545;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.uploaded-file button:hover i.bi-x-circle {
+  color: #b91c1c;
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Center buttons and add spacing */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Style input with 3D-like effect */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.8);
+  padding: 10px 14px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #90caf9;
+  box-shadow: 0 0 8px rgba(30, 136, 229, 0.5);
+}
+
+/* Add 3D effect to card */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card {
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Optional: Lift on hover */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: white !important;
+}
+.btn-danger:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+}
+
+.result-section.positive {
+  background: linear-gradient(135deg, #e6f4ea, #c8f7d3); /* Green tone */
+  border-left: 6px solid #16a34a;
+}
+
+.result-section.negative {
+  background: linear-gradient(135deg, #fbeaea, #fbd3d3); /* Red tone */
+  border-left: 6px solid #dc2626;
+}
+
+.result-section.neutral {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb); /* Gray tone */
+  border-left: 6px solid #6b7280;
+}
+
+.upload-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #90caf9;
+  padding: 30px 40px;
+  border-radius: 16px;
+  cursor: pointer;
+  color: #1a237e;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.upload-label:hover {
+  background-color: #e3f2fd;
+  transform: scale(1.02);
+}
+
+.upload-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #1e88e5;
+}
+
+
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #333;
+
+  
+  /* Soft inner shadows for 3D inset effect */
+  box-shadow:
+    inset 4px 4px 6px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Optional: subtle outer shadow to lift the container */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+
+  /* Optional smooth transition */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.uploaded-file button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.uploaded-file i {
+  font-size: 20px;
+  color: #dc3545;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.uploaded-file button:hover i {
+  color: #b91c1c;
+  transform: scale(1.2);
+}
+
+.table-responsive {
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 8px;
+}
+
+.success-message {
+  background-color: #e6ffed;
+  border-left: 6px solid #28a745;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #155724;
+  font-weight: 500;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.sentiment-text.positive {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.sentiment-text.negative {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.sentiment-text.neutral {
+  color: #6c757d;
+  font-weight: bold;
+}
+
+/* Uploaded file container */
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  gap: 10px;
+  padding: 8px 14px; /* Slightly smaller padding */
+  border-radius: 12px;
+  font-weight: 600;
+  color: #222;
+
+  /* 3D Gradient background */
+  background: linear-gradient(145deg, #bbdefb, #90caf9) !important; 
+
+  /* Soft inner shadows for subtle inset */
+  box-shadow:
+    inset 3px 3px 6px rgba(255, 255, 255, 0.85),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.07);
+
+  max-width: 280px;
+  margin: 0 auto; /* Center horizontally */
+  user-select: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Slightly smaller font size for filename text inside uploaded-file */
+.uploaded-file span {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+  
+}
+
+/* Button inside uploaded-file */
+.uploaded-file button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #dc3545;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover effect for delete/trash icon */
+.uploaded-file button:hover i {
+  color: #a71d2a;
+  transform: scale(1.3);
+}
+
+
+.clear-button {
+  background: linear-gradient(to right, #b02523, #eb1818); /* vibrant red gradient */
+  color: white;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.clear-button:hover {
+  background: linear-gradient(to right, #b71c1c, #7f0000); /* darker red gradient */
+  transform: scale(1.03);
+}
+
+
+.predict-button {
+  background: linear-gradient(to right, #30526b, #1e6f8a);
+  color: white;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Hover effect */
+.predict-button:hover {
+  background: linear-gradient(to right, #1e3a8a, #15216b);
+  transform: scale(1.03);
+}
