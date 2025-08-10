@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './SentimentChecker.css'; // ✅ Make sure this file exists in /src
+import './SentimentChecker.css'; // Make sure this file exists in /src
 
 function SentimentChecker() {
   const [input, setInput] = useState('');
