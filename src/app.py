@@ -4,6 +4,7 @@ from transformers import XLMRobertaTokenizer, XLMRobertaForSequenceClassificatio
 import torch
 import sqlite3
 from datetime import datetime
+import re
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +21,18 @@ model.to(device)
 
 # Label mapping
 label_map = {0: "Positive", 1: "Neutral", 2: "Negative"}
+
+# preprocessing function
+def preprocess_text(text):
+    # Normalize whitespace
+    text = " ".join(text.split())
+    # Replace URLs with placeholder
+    text = re.sub(r"http\S+", "URL", text)
+    # Replace mentions with placeholder
+    text = re.sub(r"@\w+", "USER", text)
+    # Keep emojis as-is
+    return text
+
 
 # Log predictions to SQLite
 def log_prediction(text, label, confidence):
