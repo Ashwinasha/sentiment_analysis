@@ -138,10 +138,10 @@ function SentimentChecker() {
       <h2 className="mb-5 fw-semibold">Sentiment Analysis</h2>
 
       <div className="tab-buttons mb-5">
-        <button className={`${mode === 'text' ? 'active-tab' : ''} me-3`} onClick={() => setMode('text')}>
+        <button className={`sentiment-button ${mode === 'text' ? 'active-tab' : ''} me-3`} onClick={() => setMode('text')}>
           Enter Text
         </button>
-        <button className={mode === 'csv' ? 'active-tab' : ''} onClick={() => setMode('csv')}>
+        <button  className={`sentiment-button ${mode === 'csv' ? 'active-tab' : ''}`}  onClick={() => setMode('csv')}>
           Upload CSV
         </button>
       </div>

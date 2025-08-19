@@ -38,7 +38,7 @@ input[type="text"]:focus {
 }
 
 /* Button */
-button {
+.sentiment-button {
   margin-top: 20px;
   padding: 14px 28px;
   font-size: 16px;
@@ -51,12 +51,12 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.sentiment-button:hover {
   background: linear-gradient(to right, #2196f3, #00bcd4);
   transform: scale(1.05);
 }
 
-button:disabled {
+.sentiment-button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
 }
@@ -109,4 +109,9 @@ button:disabled {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #e3f2fd, #f1f8ff);
 }

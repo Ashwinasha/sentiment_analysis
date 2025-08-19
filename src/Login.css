@@ -1,0 +1,98 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport */
+  width: 100%;
+  background: linear-gradient(135deg, #cce7ff, #99d6ff,rgb(65, 166, 238));
+}
+
+.login-container {
+  width: 100%;
+  max-width: 600px; /* Bigger card */
+  padding: 20px;
+}
+
+.login-card {
+  background: linear-gradient(145deg, #f8fcff, #eef9ff);
+  padding: 50px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  color: #003366;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-card input.form-control {
+  background: #cce7ff;
+  color: #003366;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.login-card input.form-control:focus {
+  background: #d9f1ff;
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.login-card .btn-primary {
+  background: linear-gradient(90deg, #66ccff, #3399ff);
+  border: none;
+  transition: all 0.3s ease;
+  color: white;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+
+  width: 50% !important;         /* Reduce width */
+  display: block;     /* Allows margin auto to work */
+  margin: 20px auto 0 auto; /* Center horizontally and add top margin */
+  text-align: center; /* Ensure text is centered */
+}
+
+.login-card .btn-primary:hover {
+  background: linear-gradient(90deg, #3399ff, #66ccff);
+}
+
+.spinner-border {
+  vertical-align: middle;
+}
+
+.form-btn {
+  display: block;          /* Allows margin auto to work */
+  width: 50% !important;   /* Reduced width */
+  margin: 20px auto 0 auto;/* Center horizontally and add top margin */
+  text-align: center;      /* Center text */
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.arrow-back-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid orange; /* Orange border */
+  background-color: #f0f0f0;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+}
+
+.arrow-back-btn:hover {
+  background-color: #ffc107; /* Bootstrap warning color */
+  transform: scale(1.1);
+  border-color: darkorange; /* Slightly darker on hover */
+}

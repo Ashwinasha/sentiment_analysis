@@ -1,0 +1,126 @@
+.manage-account-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport */
+  width: 100%;
+  background: linear-gradient(135deg, #cce7ff, #99d6ff, #66c2ff);
+}
+
+.manage-account-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 50px;
+}
+
+.manage-account-card {
+  background: linear-gradient(145deg, #f8fcff, #eef9ff);
+  padding: 50px !important;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  color: #003366;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.manage-account-card h2.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #003366;
+}
+
+.manage-account-card .message {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #ff4d4f; /* Red for error, can dynamically change */
+}
+
+.manage-account-card label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.manage-account-card input {
+  background: #cce7ff;
+  color: #003366;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.manage-account-card input:focus {
+  background: #d9f1ff;
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.manage-account-card .btn-save {
+  background: linear-gradient(90deg, #66ccff, #3399ff);
+  border: none;
+  transition: all 0.3s ease;
+  color: white;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  width: 50%;
+  display: block;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.manage-account-card .btn-save:hover {
+  background: linear-gradient(90deg, #3399ff, #66ccff);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: red;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+  background: darkred;
+}
+
+.manage-account-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.manage-account-card .message {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.manage-account-card .message.error {
+  color: #ff4d4f; /* Red */
+}
+
+.manage-account-card .message.success {
+  color: #28a745; /* Green */
+}
