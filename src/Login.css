@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh; /* Full viewport */
   width: 100%;
-  background: linear-gradient(135deg, #cce7ff, #99d6ff,rgb(65, 166, 238));
+  background: linear-gradient(135deg, #d2e7fa, #a1d8fa,rgb(152, 211, 253));
 }
 
 .login-container {
@@ -95,4 +95,8 @@
   background-color: #ffc107; /* Bootstrap warning color */
   transform: scale(1.1);
   border-color: darkorange; /* Slightly darker on hover */
+}
+
+.is-invalid {
+  border: 2px solid red !important;
 }

@@ -24,7 +24,11 @@ function ForgotPassword() {
 
       if (data.success) {
         setMessage('✅ OTP sent! Redirecting to reset password...');
-        setTimeout(() => navigate(`/reset-password?email=${encodeURIComponent(email)}`), 1500);
+
+        // Navigate to Reset Password page and pass email in state
+        setTimeout(() => {
+          navigate('/reset-password', { state: { email } });
+        }, 1500);
       } else {
         setMessage(data.error || 'Something went wrong.');
       }

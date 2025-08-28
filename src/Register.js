@@ -6,13 +6,35 @@ function Register() {
   const [form, setForm] = useState({ name: '', email: '', username: '', password: '', otp: '' });
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [otpSent, setOtpSent] = useState(false); // Track if OTP has been sent
+  const [otpSent, setOtpSent] = useState(false); 
+  const [emailValid, setEmailValid] = useState(true); // track email validity
   const navigate = useNavigate();
 
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    if (name === 'email') {
+      setEmailValid(validateEmail(value)); // validate email on typing
+    }
+  };
+
+  const validateEmail = (email) => {
+    // Simple regex validation for email
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  };
 
   const handleSendOtp = async () => {
-    if (!form.email) return setMessage('Please enter your email to receive OTP.');
+    if (!form.email) {
+      return setMessage('Please enter your email to receive OTP.');
+    }
+
+    if (!validateEmail(form.email)) {
+      setEmailValid(false);
+      return setMessage('❌ Invalid email format. Please enter a valid email address.');
+    }
+
     setLoading(true);
     setMessage('');
 
@@ -40,6 +62,11 @@ function Register() {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!otpSent) return setMessage('Please send OTP first.');
+
+    if (!validateEmail(form.email)) {
+      setEmailValid(false);
+      return setMessage('❌ Invalid email format.');
+    }
 
     setLoading(true);
     setMessage('');
@@ -97,8 +124,9 @@ function Register() {
               name="email"
               placeholder="Email"
               type="email"
+              value={form.email}
               onChange={handleChange}
-              className="form-control mb-3"
+              className={`form-control mb-3 ${!emailValid ? 'is-invalid' : ''}`}
               required
             />
             {!otpSent && (

@@ -90,7 +90,7 @@ def hash_password(password):
 def generate_otp():
     return str(random.randint(100000, 999999))
 
-# Register
+
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -112,14 +112,18 @@ def register():
         row = cursor.fetchone()
         if not row:
             return jsonify({'error': 'Email not registered for OTP'}), 400
-        # Insert remaining user info
+
+        # Check if username is already taken
+        cursor.execute("SELECT id FROM users WHERE username=?", (username,))
+        if cursor.fetchone():
+            return jsonify({'error': 'Username already exists'}), 400
+
+        # Update user info and clear OTP
         cursor.execute(
             "UPDATE users SET name=?, username=?, password=?, otp=NULL, otp_expiry=NULL WHERE email=?",
             (name, username, hashed_password, email)
         )
         conn.commit()
-    except sqlite3.IntegrityError:
-        return jsonify({'error': 'Username or email already exists'}), 400
     finally:
         conn.close()
 
@@ -127,11 +131,12 @@ def register():
 
 
 
+
 app.secret_key = "secret123"
 
 #login
 # Make session non-permanent (ends when browser/tab closes)
-app.permanent_session_lifetime = timedelta(minutes=10)  # optional timeout
+
 
 
 @app.route('/login', methods=['POST'])
@@ -230,26 +235,36 @@ def get_user(user_id):
         print("Error fetching user:", e)
         return jsonify({'error': 'Server error fetching user'}), 500
 
+
 @app.route('/register-send-otp', methods=['POST'])
 def register_send_otp():
     data = request.get_json()
     email = data.get('email')
+
     if not email:
         return jsonify({'error': 'Email is required'}), 400
 
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Check if email already exists
+    cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+    existing_user = cursor.fetchone()
+
+    if existing_user:
+        conn.close()
+        return jsonify({'error': 'Email is already registered'}), 400
+
+    # Generate OTP
     otp = generate_otp()
     expiry = (datetime.now() + timedelta(minutes=5)).isoformat()
 
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    # Store OTP and expiry in DB
-    cursor.execute("UPDATE users SET otp=?, otp_expiry=? WHERE email=?", (otp, expiry, email))
-    if cursor.rowcount == 0:
-        # If user doesn't exist, insert a temporary row
-        cursor.execute("INSERT INTO users (email, otp, otp_expiry) VALUES (?, ?, ?)", (email, otp, expiry))
+    # Store temporary record with OTP
+    cursor.execute("INSERT INTO users (email, otp, otp_expiry) VALUES (?, ?, ?)", (email, otp, expiry))
     conn.commit()
     conn.close()
 
+    # Send OTP via email
     try:
         msg = Message("Your Registration OTP", recipients=[email])
         msg.body = f"Your OTP is: {otp}. Valid for 5 minutes."
@@ -258,6 +273,8 @@ def register_send_otp():
         return jsonify({'error': f'Failed to send OTP: {str(e)}'}), 500
 
     return jsonify({'success': 'OTP sent to email'})
+
+
 
 
 @app.route('/register-verify-otp', methods=['POST'])

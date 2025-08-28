@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh; /* Full viewport */
   width: 100%;
-  background: linear-gradient(135deg, #cce7ff, #99d6ff, #66c2ff);
+  background: linear-gradient(to right, #cee7fb, #c2dffb);
 }
 
 .manage-account-container {

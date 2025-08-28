@@ -441,7 +441,7 @@ h2 {
 
 /* Hover effect */
 .predict-button:hover {
-  background: linear-gradient(to right, #1e3a8a, #15216b);
+  background: linear-gradient(to right, #cee7fb, #c2dffb);
   transform: scale(1.03);
 }
 
