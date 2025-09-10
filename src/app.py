@@ -9,7 +9,6 @@ from flask_mail import Mail, Message
 import random
 import hashlib
 from datetime import timedelta
-import emoji
 
 
 
@@ -49,9 +48,6 @@ def preprocess_text(text, map_emoji=False):
     # Replace mentions with placeholder
     text = re.sub(r"@\w+", "USER", text)
 
-    if map_emoji:
-        # Convert emojis to descriptive text
-        text = emoji.demojize(text)  # e.g., "I love this 😂" -> "I love this :face_with_tears_of_joy:"
     return text
 
 
@@ -417,6 +413,36 @@ def update_user(user_id):
 
 
 
+# Sentiment trend over time
+@app.route('/dashboard-history', methods=['GET'])
+def dashboard_history():
+    conn = sqlite3.connect('sentiment_logs.db')
+    cursor = conn.cursor()
+
+    # Group by DATE (not full timestamp)
+    cursor.execute('''
+        SELECT DATE(timestamp),
+               SUM(CASE WHEN sentiment = 'Positive' THEN 1 ELSE 0 END) as Positive,
+               SUM(CASE WHEN sentiment = 'Neutral' THEN 1 ELSE 0 END) as Neutral,
+               SUM(CASE WHEN sentiment = 'Negative' THEN 1 ELSE 0 END) as Negative
+        FROM sentiment_logs
+        GROUP BY DATE(timestamp)
+        ORDER BY DATE(timestamp)
+    ''')
+    rows = cursor.fetchall()
+    conn.close()
+
+    history = []
+    for row in rows:
+        history.append({
+            "date": row[0],
+            "Positive": row[1],
+            "Neutral": row[2],
+            "Negative": row[3]
+        })
+
+    return jsonify(history)
+
 
 
 # Log predictions to SQLite
@@ -470,30 +496,36 @@ def predict():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
 
-    # Accept list or single string
-    texts = [text] if isinstance(text, str) else text
-    if not isinstance(texts, list):
+    # Convert input to list for uniform processing
+    if isinstance(text, str):
+        texts = [text]
+    elif isinstance(text, list):
+        texts = text
+    else:
         return jsonify({'error': 'Invalid input format'}), 400
 
-    # Preprocess each text (without retraining, emojis remain or optionally mapped)
-    texts = [preprocess_text(t, map_emoji=False) for t in texts]  # set map_emoji=True if you want mapping
+    # Preprocess all texts (single text or CSV batch)
+    texts = [preprocess_text(t) for t in texts]
 
     # Tokenize
     inputs = tokenizer(texts, return_tensors='pt', padding=True, truncation=True, max_length=128)
     inputs = {k: v.to(device) for k, v in inputs.items()}
 
+    # Model inference
     with torch.no_grad():
         outputs = model(**inputs)
         logits = outputs.logits
         probs = torch.softmax(logits, dim=1)
         predicted_classes = torch.argmax(probs, dim=1)
 
+    # Prepare results
     results = []
     for i in range(len(texts)):
         label_index = predicted_classes[i].item()
         label = label_map[label_index]
         confidence = probs[i][label_index].item()
 
+        # Optional: log prediction
         log_prediction(texts[i], label, confidence)
 
         results.append({
@@ -502,7 +534,9 @@ def predict():
             "confidence": confidence
         })
 
+    # Return single dict if input was string, list if CSV batch
     return jsonify(results[0] if isinstance(text, str) else results)
+
 
 
 # Dashboard sentiment counts

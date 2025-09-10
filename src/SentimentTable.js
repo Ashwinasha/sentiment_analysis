@@ -28,7 +28,7 @@ function SentimentTable() {
 
   return (
     <div className="container sentiment-table-container">
-      <h2 className="text-dark mb-4 fw-semibold">Sentiment Logs</h2>
+      <h2 className="table-title mb-5">Sentiment Logs</h2>
 
 
       <div className="table-container">

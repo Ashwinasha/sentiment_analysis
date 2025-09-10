@@ -1,12 +1,21 @@
 /* Base container */
 .sentiment-table-container {
-  max-width: 1000px;
+  max-width: 1200px;
   border-radius: 16px;
   padding: 2.5rem 2.5rem;
   margin: 3rem auto;
   color: white;
  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   background-color:white;
+}
+
+.table-title {
+  font-weight: 600;          /* Semi-bold */
+  font-size: 2rem;           /* Clear, prominent size */
+  color: #1F2937;            /* Dark gray, professional */
+  border-bottom: 2px solid #3B82F6; /* Blue underline for emphasis */
+  padding-bottom: 8px;
+  letter-spacing: 0.5px;     /* Slight spacing for elegance */
 }
 
 

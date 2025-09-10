@@ -135,7 +135,7 @@ function SentimentChecker() {
   return (
     
     <div className="sentiment-container">
-      <h2 className="mb-5 fw-semibold">Sentiment Analysis</h2>
+      <h2 className="mb-5 table-title text-dark">Sentiment Analysis</h2>
 
       <div className="tab-buttons mb-5">
         <button className={`sentiment-button ${mode === 'text' ? 'active-tab' : ''} me-3`} onClick={() => setMode('text')}>
@@ -209,19 +209,49 @@ function SentimentChecker() {
 
             {selectedFileName && (
               <div
-                className="uploaded-file gradient-box mt-3"
+                className="uploaded-file d-flex align-items-center justify-content-between mt-3 p-3"
                 style={{
-                  boxShadow:
-                    'inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.5)',
-                  background: 'linear-gradient(135deg, #f0f4f8, #d9e2ec)',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                  background: 'linear-gradient(135deg, #e0e7ff, #f0f4f8)',
                 }}
               >
-                <span>{selectedFileName}</span>
-                <button onClick={handleCancelUpload}>
+                {/* File info with icon */}
+                <div className="d-flex align-items-center">
+                  <i
+                    className="bi bi-file-earmark-text-fill"
+                    style={{ fontSize: '1.5rem', color: '#4f46e5', marginRight: '10px' }}
+                  ></i>
+                  <span
+                    style={{
+                      fontWeight: '500',
+                      color: '#1e293b',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                      maxWidth: '200px',
+                      display: 'inline-block',
+                    }}
+                    title={selectedFileName} // shows full name on hover
+                  >
+                    {selectedFileName.length > 10
+                      ? selectedFileName.substring(0, 10) + '...'
+                      : selectedFileName}
+                  </span>
+
+                </div>
+
+                {/* Delete button */}
+                <button
+                  onClick={handleCancelUpload}
+                  className="btn btn-outline-danger btn-sm"
+                  style={{ borderRadius: '50%', padding: '0.3rem 0.5rem' }}
+                >
                   <i className="bi bi-trash-fill"></i>
                 </button>
               </div>
             )}
+
 
             {loading && (
               <div className="text-center mb-3">
