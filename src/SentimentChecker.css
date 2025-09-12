@@ -6,7 +6,7 @@ body {
 
 .sentiment-container {
   background-color: #fff;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 100px auto;
   padding: 50px !important;
   border-radius: 16px;
@@ -451,4 +451,35 @@ h2 {
   border-bottom: 2px solid #3B82F6; /* Blue underline for emphasis */
   padding-bottom: 8px;
   letter-spacing: 0.5px;     /* Slight spacing for elegance */
+}
+
+/* Wrap the table in a scrollable container */
+.table-responsive {
+  max-height: 440px !important; /* scrollable height */
+  overflow-y: auto;
+  position: relative; /* makes sticky relative to this container */
+}
+
+/* Sticky table header with single gradient across full thead */
+.table-responsive thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #5badf1, #b7d6fc); /* Full row gradient */
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table-responsive thead th {
+  background: transparent !important;
+  border: none;           /* remove individual borders */
+  text-align: center;
+  font-weight: 600;
+  background: linear-gradient(90deg, #3B82F6, #60A5FA);
+  padding: 12px 8px;      /* optional for better spacing */
+}
+
+/* Optional: remove borders in tbody too */
+.table-responsive tbody td {
+  border: none;
 }

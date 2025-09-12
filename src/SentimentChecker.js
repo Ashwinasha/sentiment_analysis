@@ -150,21 +150,23 @@ function SentimentChecker() {
         <div className="card p-4 shadow-sm">
           <input
             type="text"
-            className="form-control mb-2"
+            className="form-control mb-3 mt-2"
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder="Enter your sentence"
           />
           {error && <p className="text-danger">{error}</p>}
-          <div className="button-group">
-            <button className="btn btn-success me-2 predict-button " onClick={handleSubmit} disabled={loading}>
+          
+          <div className="d-flex justify-content-center gap-2">
+            <button className="btn btn-success predict-button" onClick={handleSubmit} disabled={loading}>
               {loading ? 'Analyzing...' : 'Predict'}
             </button>
             {input.trim() && (
-            <button className="btn btn-danger clear-button" onClick={handleClear}>Clear</button>
-          )}
-
-      </div>
+              <button className="btn btn-danger clear-button" onClick={handleClear}>
+                Clear
+              </button>
+            )}
+          </div>
 
 
           {result && (
@@ -267,8 +269,8 @@ function SentimentChecker() {
 
             {batchResults.length > 0 && (
               <div className="table-responsive" style={{ maxHeight: '300px', overflowY: 'auto' }}>
-                <table className="table table-bordered table-striped">
-                  <thead className="table-dark">
+                <table className="table table-bordered">
+                  <thead>
                     <tr>
                       <th>#</th>
                       <th>Text</th>
