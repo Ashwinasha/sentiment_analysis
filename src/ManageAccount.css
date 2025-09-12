@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 .manage-account-card h2.title {
@@ -70,7 +71,7 @@
   padding: 12px;
   font-weight: 600;
   border-radius: 8px;
-  width: 50%;
+  width: 40%;
   display: block;
   margin: 20px auto 0 auto;
   text-align: center;
@@ -124,3 +125,4 @@
 .manage-account-card .message.success {
   color: #28a745; /* Green */
 }
+

@@ -97,7 +97,18 @@ function ResetPassword() {
               className="btn btn-success w-100 position-relative form-btn"
               disabled={loading}
             >
-              {loading ? 'Resetting...' : 'Reset Password'}
+              {loading ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Resetting...
+                </>
+              ) : (
+                'Reset Password'
+              )}
             </button>
           </form>
           {message && (

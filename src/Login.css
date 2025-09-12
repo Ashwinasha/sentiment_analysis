@@ -49,7 +49,7 @@
   font-weight: 600;
   border-radius: 8px;
 
-  width: 50% !important;         /* Reduce width */
+  width: 40% !important;         /* Reduce width */
   display: block;     /* Allows margin auto to work */
   margin: 20px auto 0 auto; /* Center horizontally and add top margin */
   text-align: center; /* Ensure text is centered */
@@ -65,7 +65,7 @@
 
 .form-btn {
   display: block;          /* Allows margin auto to work */
-  width: 50% !important;   /* Reduced width */
+  width: 40% !important;   /* Reduced width */
   margin: 20px auto 0 auto;/* Center horizontally and add top margin */
   text-align: center;      /* Center text */
   padding: 12px;

@@ -1,12 +1,15 @@
 /* Base container */
 .sentiment-table-container {
-  max-width: 1200px;
+  max-width: 1400px;
   border-radius: 16px;
   padding: 2.5rem 2.5rem;
   margin: 3rem auto;
   color: white;
- box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   background-color:white;
+
+  /* Add animation here */
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 .table-title {
@@ -29,7 +32,7 @@ h2 {
 
 /* Scrollable tbody instead of scroll wrapper */
 .table-container {
-  max-height: 460px;
+  max-height: 500px;
   overflow-y: auto;
   border-radius: 16px;
   background-color: #fff;
